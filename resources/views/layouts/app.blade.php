@@ -247,8 +247,17 @@
                                     @endif
                                 @else
                                 <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('velos.index') }}">Velo </a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{ route('association.index') }}">Association</a>
                                 </li>
+
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('locale.index') }}">Locale</a>
+                                </li>
+                                
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('bloc.index') }}">Blog</a>
                                 </li>
