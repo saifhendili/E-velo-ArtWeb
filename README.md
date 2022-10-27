@@ -1,3 +1,19 @@
+
+1/composer update
+
+2/composer require laravel/ui
+
+3/php artisan ui bootstrap --auth
+
+4/npm install
+
+5/npm run dev
+
+6/php artisan migrate
+
+7/php artisan optimize
+
+8/php artisan serve
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
