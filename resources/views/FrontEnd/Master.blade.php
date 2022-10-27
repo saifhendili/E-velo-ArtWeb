@@ -253,6 +253,9 @@
                                     @endif
                                 @else
                                 <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('velos.index') }}">Velo </a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{ route('association.index') }}">Association</a>
                                 </li>
                                 <li class="nav-item">
