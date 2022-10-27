@@ -39,15 +39,15 @@ Route::delete("destroyVelo/{id}",[VeloController::class,'destroyVelo']);
 //Route::put("EditEvent/{id}", [EventController::class,'EditEvent']);
 //Route::get("getAllEvents", [EventController::class,'getAllEvents']);
 //Route::delete("destroyEvent/{id}",[EventController::class,'destroyEvent']);
-Route::resource('event',EventController::class);
+Route::resource('/admin/event',EventController::class);
 
-Route::resource('Cyclicte',CyclicteController::class);
+Route::resource('/admin/Cyclicte',CyclicteController::class);
 
 Route::resource("/association",AssociationController::class);
 Route::resource("/locale",LocalController::class);
 
 Route::get('/locale/{association_id}/getLocals', [\App\Http\Controllers\AssociationController::class , 'getLocals'] );
-Route::get('Cyclicte/{event_id}/getCyclicte', [\App\Http\Controllers\EventController::class , 'getCyclicte'] );
+Route::get('/admin/Cyclicte/{event_id}/getCyclicte', [\App\Http\Controllers\EventController::class , 'getCyclicte'] );
 
 });
 

@@ -25,7 +25,7 @@
                         <h2 class="text-center">Cyclicte</h2>
                     </div>
                     <div class="card-body">
-                        <a href="{{ url('/Cyclicte/create') }}" class="btn btn-success btn-sm" title="Add New Student">
+                        <a href="{{ url('/admin/Cyclicte/create') }}" class="btn btn-success btn-sm" title="Add New Student">
                             Add New Cyclicte
                         </a>
                         <br/>
@@ -58,11 +58,11 @@
                                         <td>{{ $item->Event->nameevent }}</td>
 
                                         <td>
-                                            <a href="{{ url('/Cyclicte/' . $item->id) }}" title="View Event"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/Cyclicte/' . $item->id . '/edit') }}" title="Edit Event"><button class="btn btn-primary btn-sm"><i class="feather icon-edit-2" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/Cyclicte/' . $item->id) }}" title="View Event"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/admin/Cyclicte/' . $item->id . '/edit') }}" title="Edit Event"><button class="btn btn-primary btn-sm"><i class="feather icon-edit-2" aria-hidden="true"></i> Edit</button></a>
 
   
-                                            <form method="POST" action="{{ url('/Cyclicte' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            <form method="POST" action="{{ url('/admin/Cyclicte' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete Event" onclick="return confirm("Confirm delete?")"><i class="feather icon-delete" aria-hidden="true"></i> Delete</button>
