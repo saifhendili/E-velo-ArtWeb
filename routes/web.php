@@ -11,6 +11,7 @@ use App\Http\Controllers\LocalController;
 use App\Http\Controllers\CyclicteController;
 
 use App\Http\Controllers\EventUserController;
+use App\Http\Controllers\AssociationUserController;
 
 
 
@@ -53,6 +54,8 @@ Route::get('/admin/Cyclicte/{event_id}/getCyclicte', [\App\Http\Controllers\Even
 });
 Route::resource('blog',BlogUserController::class);
 Route::resource('eventuser',EventUserController::class);
+Route::resource('associationuser',AssociationUserController::class);
+
 
 Auth::routes();
 
