@@ -94,7 +94,8 @@ class LocalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $association = Locale::find($id);
+        $association = Locale::find($id); 
+        //test
         $input = $request->all();
         $association->update($input);
         return redirect('admin/locale')->with('flash_message', 'Locale Updated!'); 
