@@ -26,7 +26,7 @@
                         <h2>Laravel 9 Crud</h2>
                     </div>
                     <div class="card-body">
-                        <a href="{{ url('/bloc/create') }}" class="btn btn-success btn-sm" title="Add New Blog">
+                        <a href="{{ url('/admin/bloc/create') }}" class="btn btn-success btn-sm" title="Add New Blog">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
                         <br/>

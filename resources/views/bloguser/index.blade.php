@@ -46,6 +46,7 @@
                       <small>3 days ago</small>
 
                       </div>
+                      <a href="{{ url('/blog/' . $item->id) }}" title="View Blog"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
 
 
                       <div class="action d-flex justify-content-between mt-2 align-items-center">
