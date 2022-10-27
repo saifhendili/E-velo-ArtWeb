@@ -10,6 +10,8 @@ use App\Http\Controllers\BlogUserController;
 use App\Http\Controllers\LocalController;
 use App\Http\Controllers\CyclicteController;
 
+use App\Http\Controllers\EventUserController;
+
 
 
 /*
@@ -50,6 +52,7 @@ Route::get('/locale/{association_id}/getLocals', [\App\Http\Controllers\Associat
 Route::get('/admin/Cyclicte/{event_id}/getCyclicte', [\App\Http\Controllers\EventController::class , 'getCyclicte'] );
 });
 Route::resource('blog',BlogUserController::class);
+Route::resource('eventuser',EventUserController::class);
 
 Auth::routes();
 
