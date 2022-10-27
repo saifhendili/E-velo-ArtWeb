@@ -25,7 +25,7 @@
   <div class="card-header text-center">Create New Locale</div>
   <div class="card-body">
        
-      <form action="{{ url('locale') }}" method="post">
+      <form action="{{ url('admin/locale') }}" method="post">
         {!! csrf_field() !!}
         <label>Libelle</label></br>
         <input type="text" name="libelle" id="libelle" class="form-control"></br>

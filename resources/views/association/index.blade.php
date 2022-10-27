@@ -25,7 +25,7 @@
                         <h2>Association</h2>
                     </div>
                     <div class="card-body">
-                        <a href="{{ url('/association/create') }}" class="btn btn-success btn-sm" title="Add New Student">
+                        <a href="{{ url('/admin/association/create') }}" class="btn btn-success btn-sm" title="Add New Student">
                             Add New Association
                         </a>
                         <br/>
@@ -57,12 +57,12 @@
                                         <td>{{ $item->objective }}</td>
 
                                         <td>
-                                            <a href="{{ url('/association/' . $item->id) }}" title="View Association"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/association/' . $item->id . '/edit') }}" title="Edit Association"><button class="btn btn-primary btn-sm"><i class="feather icon-edit-2" aria-hidden="true"></i> Edit</button></a>
-                                            <a href="{{ url('/locale/' . $item->id . '/getLocals') }}" title="Events "><button class="btn btn-secondary btn-sm"><i class="feather icon-bell" aria-hidden="true"></i> Locals</button></a>
+                                            <a href="{{ url('/admin/association/' . $item->id) }}" title="View Association"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/admin/association/' . $item->id . '/edit') }}" title="Edit Association"><button class="btn btn-primary btn-sm"><i class="feather icon-edit-2" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/locale/' . $item->id . '/getLocals') }}" title="Events "><button class="btn btn-secondary btn-sm"><i class="feather icon-bell" aria-hidden="true"></i> Locals</button></a>
 
   
-                                            <form method="POST" action="{{ url('/association' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            <form method="POST" action="{{ url('/admin/association' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete Association" onclick="return confirm("Confirm delete?")"><i class="feather icon-delete" aria-hidden="true"></i> Delete</button>

@@ -43,8 +43,8 @@ Route::resource('event',EventController::class);
 
 Route::resource('Cyclicte',CyclicteController::class);
 
-Route::resource("/association",AssociationController::class);
-Route::resource("/locale",LocalController::class);
+Route::resource("/admin/association",AssociationController::class);
+Route::resource("/admin/locale",LocalController::class);
 
 Route::get('/locale/{association_id}/getLocals', [\App\Http\Controllers\AssociationController::class , 'getLocals'] );
 Route::get('Cyclicte/{event_id}/getCyclicte', [\App\Http\Controllers\EventController::class , 'getCyclicte'] );
@@ -53,6 +53,10 @@ Route::get('Cyclicte/{event_id}/getCyclicte', [\App\Http\Controllers\EventContro
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 

@@ -25,7 +25,7 @@
                         <h2 class="text-center">Locale</h2>
                     </div>
                     <div class="card-body">
-                        <a href="{{ url('/locale/create') }}" class="btn btn-success btn-sm" title="Add New Student">
+                        <a href="{{ url('/admin/locale/create') }}" class="btn btn-success btn-sm" title="Add New Student">
                             Add New Locale
                         </a>
                         <br/>
@@ -56,11 +56,11 @@
                                         <td>{{ $item->Association->nom }}</td>
 
                                         <td>
-                                            <a href="{{ url('/locale/' . $item->id) }}" title="View Association"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/locale/' . $item->id . '/edit') }}" title="Edit Association"><button class="btn btn-primary btn-sm"><i class="feather icon-edit-2" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/locale/' . $item->id) }}" title="View Association"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/admin/locale/' . $item->id . '/edit') }}" title="Edit Association"><button class="btn btn-primary btn-sm"><i class="feather icon-edit-2" aria-hidden="true"></i> Edit</button></a>
 
   
-                                            <form method="POST" action="{{ url('/locale' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            <form method="POST" action="{{ url('/admin/locale' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete Association" onclick="return confirm("Confirm delete?")"><i class="feather icon-delete" aria-hidden="true"></i> Delete</button>
