@@ -58,7 +58,7 @@ class LocalController extends Controller
 
         $input = $request->all();
         Locale::create($input);
-        return redirect('locale')->with('flash_message', 'Locale Addedd!');  
+        return redirect('admin/locale')->with('flash_message', 'Locale Addedd!');  
     }
 
     /**
@@ -94,10 +94,11 @@ class LocalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $association = Locale::find($id);
+        $association = Locale::find($id); 
+        //test
         $input = $request->all();
         $association->update($input);
-        return redirect('locale')->with('flash_message', 'Locale Updated!'); 
+        return redirect('admin/locale')->with('flash_message', 'Locale Updated!'); 
     }
 
     /**
@@ -109,6 +110,6 @@ class LocalController extends Controller
     public function destroy($id)
     {
         Locale::destroy($id);
-        return redirect('locale')->with('flash_message', 'Locale deleted!');  
+        return redirect('admin/locale')->with('flash_message', 'Locale deleted!');  
     }
 }

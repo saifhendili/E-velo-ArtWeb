@@ -56,7 +56,7 @@ class AssociationController extends Controller
         $path=$request->file('picture')->storeAs('images',$filename,'public');
     $input["picture"]='storage/'.$path;
         Association::create($input);
-        return redirect('association')->with('flash_message', 'Association Addedd!');  
+        return redirect('admin/association')->with('flash_message', 'Association Addedd!');  
     }
 
     /**
@@ -112,7 +112,7 @@ class AssociationController extends Controller
         $association = Association::find($id);
         $input = $request->all();
         $association->update($input);
-        return redirect('association')->with('flash_message', 'Association Updated!'); 
+        return redirect('admin/association')->with('flash_message', 'Association Updated!'); 
     }
 
     /**
@@ -124,7 +124,7 @@ class AssociationController extends Controller
     public function destroy($id)
     {
         Association::destroy($id);
-        return redirect('association')->with('flash_message', 'Association deleted!');  
+        return redirect('admin/association')->with('flash_message', 'Association deleted!');  
     }
 
 

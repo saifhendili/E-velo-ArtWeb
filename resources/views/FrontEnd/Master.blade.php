@@ -252,6 +252,16 @@
                                         </li>
                                     @endif
                                 @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('association.index') }}">Association</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('bloc.index') }}">Blog</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('event.index') }}">Event</a>
+                                </li>
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             {{ Auth::user()->name }}
