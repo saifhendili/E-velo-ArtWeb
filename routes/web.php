@@ -46,7 +46,8 @@ Route::resource('Cyclicte',CyclicteController::class);
 Route::resource("/admin/association",AssociationController::class);
 Route::resource("/admin/locale",LocalController::class);
 
-Route::get('/locale/{association_id}/getLocals', [\App\Http\Controllers\AssociationController::class , 'getLocals'] );
+
+Route::get('/admin/locale/{association_id}/getLocals', [\App\Http\Controllers\AssociationController::class , 'getLocals'] );
 Route::get('Cyclicte/{event_id}/getCyclicte', [\App\Http\Controllers\EventController::class , 'getCyclicte'] );
 
 });
