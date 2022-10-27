@@ -6,9 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -19,10 +17,8 @@
     <meta name="keywords" content="Empire, bootstrap admin template, bootstrap admin panel, bootstrap 4 admin template, admin template">
     <meta name="author" content="Srthemesvilla" />
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
-
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-
     <!-- Icon fonts -->
     <link rel="stylesheet" href="assets/fonts/fontawesome.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.css">
@@ -213,6 +209,7 @@
                     </li>
                 </ul>
             </div>
+          
             @endif
             @endguest
             <!-- [ Layout sidenav ] End -->
@@ -249,6 +246,16 @@
                                         </li>
                                     @endif
                                 @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('association.index') }}">Association</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('bloc.index') }}">Blog</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('event.index') }}">Event</a>
+                                </li>
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             {{ Auth::user()->name }}
