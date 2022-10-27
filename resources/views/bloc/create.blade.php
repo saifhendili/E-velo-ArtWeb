@@ -4,7 +4,7 @@
   <div class="card-header">Blog Page</div>
   <div class="card-body">
       
-      <form action="{{ url('bloc') }}" method="post">
+      <form action="{{ url('admin/bloc') }}" method="post">
         {!! csrf_field() !!}
         <label>Title</label></br>
         <input type="text" name="Title" id="Title" class="form-control"></br>
