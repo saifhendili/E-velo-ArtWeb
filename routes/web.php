@@ -6,7 +6,7 @@ use App\Http\Controllers\BlocController;
 use App\Http\Controllers\EventController;
 
 use App\Http\Controllers\AssociationController;
-
+use App\Http\Controllers\BlogUserController;
 use App\Http\Controllers\LocalController;
 use App\Http\Controllers\CyclicteController;
 
@@ -46,23 +46,10 @@ Route::resource('/admin/Cyclicte',CyclicteController::class);
 Route::resource("/admin/association",AssociationController::class);
 Route::resource("/admin/locale",LocalController::class);
 
-<<<<<<< HEAD
 Route::get('/locale/{association_id}/getLocals', [\App\Http\Controllers\AssociationController::class , 'getLocals'] );
 Route::get('/admin/Cyclicte/{event_id}/getCyclicte', [\App\Http\Controllers\EventController::class , 'getCyclicte'] );
-=======
-
-Route::get('/admin/locale/{association_id}/getLocals', [\App\Http\Controllers\AssociationController::class , 'getLocals'] );
-Route::get('Cyclicte/{event_id}/getCyclicte', [\App\Http\Controllers\EventController::class , 'getCyclicte'] );
->>>>>>> 980a128329976b52b9af88a8369694a0df871af8
-
 });
-
-
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('blog',BlogUserController::class);
 
 Auth::routes();
 

@@ -5,36 +5,36 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Bloc;
 
-class BlocController extends Controller
+class BlogUserController extends Controller
 {
     public function index()
     {
         $bloc = Bloc::all();
-        return view ('bloc.index')->with('bloc', $bloc);
+        return view ('bloguser.index')->with('bloc', $bloc);
     }
     
     public function create()
     {
-        return view('bloc.create');
+        return view('blog.create');
     }
   
     public function store(Request $request)
     {
         $input = $request->all();
         Bloc::create($input);
-        return redirect('admin/bloc')->with('flash_message', 'Blog Addedd!');  
+        return redirect('blog')->with('flash_message', 'Blog Addedd!');  
     }
     
     public function show($id)
     {
         $bloc = Bloc::find($id);
-        return view('bloc.show')->with('bloc', $bloc);
+        return view('bloguser.show')->with('bloc', $bloc);
     }
     
     public function edit($id)
     {
         $bloc = Bloc::find($id);
-        return view('bloc.edit')->with('bloc', $bloc);
+        return view('blog.edit')->with('bloc', $bloc);
     }
   
     public function update(Request $request, $id)
@@ -42,12 +42,12 @@ class BlocController extends Controller
         $bloc = Bloc::find($id);
         $input = $request->all();
         $bloc->update($input);
-        return redirect('admin/bloc')->with('flash_message', 'Blog Updated!');  
+        return redirect('blog')->with('flash_message', 'Blog Updated!');  
     }
   
     public function destroy($id)
     {
         Bloc::destroy($id);
-        return redirect('admin/bloc')->with('flash_message', 'Blog deleted!');  
+        return redirect('blog')->with('flash_message', 'Blog deleted!');  
     }
 }

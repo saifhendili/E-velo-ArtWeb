@@ -37,6 +37,35 @@
     <link rel="stylesheet" href="assets/libs/flot/flot.css">
 
     <!-- Scripts -->
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assetss/images/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assetss/images/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assetss/images/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="assetss/images/favicon.ico">
+<link rel="shortcut icon" href="assetss/images/favicon.ico">
+
+<link href="assets/assetss/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="assets/assetss/css/font-awesome.css" rel="stylesheet">
+
+<link href="assets/assetss/css/font/flaticon.css" rel="stylesheet">
+
+<link href="assets/assetss/css/slick.css" rel="stylesheet">
+
+<link href="assets/assetss/css/ion.rangeSlider.min.css" rel="stylesheet">
+
+<link href="assets/assetss/css/datepicker.css" rel="stylesheet">
+
+<link href="assets/assetss/css/magnific-popup.css" rel="stylesheet">
+
+<link href="assets/assetss/css/nice-select.css" rel="stylesheet">
+
+<link href="assets/assetss/css/style.css" rel="stylesheet">
+
+<link href="assets/assetss/css/responsive.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
@@ -265,6 +294,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('event.index') }}">Event</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('Cyclicte.index') }}">Cyclicte</a>
+                                </li>
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             {{ Auth::user()->name }}
@@ -331,6 +363,33 @@
 <!-- Demo -->
 <script src="assets/js/demo.js"></script><script src="assets/js/analytics.js"></script>
 <script src="assets/js/pages/dashboards_index.js"></script>
+
+
+
+
+
+<script src="assets/assetss/js/jquery.min.js"></script>
+
+<script src="assets/assetss/js/popper.min.js"></script>
+
+<script src="assets/assetss/js/bootstrap.min.js"></script>
+
+<script src="assets/assetss/js/ion.rangeSlider.min.js"></script>
+
+<script src="assets/assetss/js/slick.min.js"></script>
+
+<script src="assets/assetss/js/datepicker.js"></script>
+<script src="assets/assetss/js/datepicker.en.js"></script>
+
+<script src="assets/assetss/js/isotope.pkgd.min.js"></script>
+
+<script src="assets/assetss/js/jquery.nice-select.js"></script>
+
+<script src="assets/assetss/js/jquery.magnific-popup.min.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnd9JwZvXty-1gHZihMoFhJtCXmHfeRQg"></script>
+
+<script src="assetss/js/custom.js"></script>
 </body>
 
 </html>
