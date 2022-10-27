@@ -1,8 +1,18 @@
-{{-- <!DOCTYPE html>
 
-<html lang="en" class="material-style layout-fixed">
-
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <title>Empire | B4+ admin template by Srthemesvilla</title>
 
     <meta charset="utf-8">
@@ -33,14 +43,23 @@
     <!-- Libs -->
     <link rel="stylesheet" href="{{asset('assets/libs/perfect-scrollbar/perfect-scrollbar.css')}}">
     <link rel="stylesheet" href="{{asset('assets/libs/flot/flot.css')}}">
-
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-
 <body>
+    <div class="page-loader">
+        <div class="bg-primary"></div>
+    </div>
+    <!-- [ Preloader ] End -->
 
+    <!-- [ Layout wrapper ] Start -->
     <div class="layout-wrapper layout-2">
         <div class="layout-inner">
             <!-- [ Layout sidenav ] Start -->
+            @guest
+            
+            @else
+            @if(Auth::user()->role)
             <div id="layout-sidenav" class="layout-sidenav sidenav sidenav-vertical bg-white logo-dark">
                 <!-- Brand demo (see assets/css/demo/demo.css) -->
                 <div class="app-brand demo">
@@ -197,187 +216,103 @@
                     </li>
                 </ul>
             </div>
+            @endif
+            @endguest
             <!-- [ Layout sidenav ] End -->
             <!-- [ Layout container ] Start -->
             <div class="layout-container">
-                <!-- [ Layout navbar ( Header ) ] Start -->
-                @extends('layouts.app')
-                <!-- [ Layout navbar ( Header ) ] End -->
+                <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                    <div class="container">
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                            {{ config('app.name', 'Laravel') }}
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+        
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <!-- Left Side Of Navbar -->
+                            <ul class="navbar-nav me-auto">
+        
+                            </ul>
+        
+                            <!-- Right Side Of Navbar -->
+                            <ul class="navbar-nav ms-auto">
+                                <!-- Authentication Links -->
+                                @guest
+                                    @if (Route::has('login'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                        </li>
+                                    @endif
+        
+                                    @if (Route::has('register'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li>
+                                    @endif
+                                @else
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->name }}
+                                        </a>
+        
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+        
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </li>
+                                @endguest
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
 
 
 
-
-
-@yield('content');
-
-
-
-
+            
                 <!-- [ Layout content ] Start -->
                
                 <!-- [ Layout content ] Start -->
           
             <!-- [ Layout container ] End -->
-        </div>
-        <!-- Overlay -->
-        <div class="layout-overlay layout-sidenav-toggle"></div>
+            <div class="layout-content">
+                @yield('content')
+                <!-- [ content ] Start -->
+            
+        <!-- [ Layout container ] End -->
     </div>
-    <!-- [ Layout wrapper] End -->
+    <!-- Overlay -->
+    <div class="layout-overlay layout-sidenav-toggle"></div>
+</div>
+<!-- [ Layout wrapper] End -->
 
-    <!-- Core scripts -->
-    <script src="{{ URL::asset('assets/js/pace.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/libs/popper/popper.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/bootstrap.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/sidenav.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/layout-helpers.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/material-ripple.js') }}"></script>
+<!-- Core scripts -->
+<script src="assets/js/pace.js"></script>
+<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script src="assets/libs/popper/popper.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/sidenav.js"></script>
+<script src="assets/js/layout-helpers.js"></script>
+<script src="assets/js/material-ripple.js"></script>
 
-    <!-- Libs -->
+<!-- Libs -->
+<script src="assets/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="assets/libs/eve/eve.js"></script>
+<script src="assets/libs/flot/flot.js"></script>
+<script src="assets/libs/flot/curvedLines.js"></script>
+<script src="assets/libs/chart-am4/core.js"></script>
+<script src="assets/libs/chart-am4/charts.js"></script>
+<script src="assets/libs/chart-am4/animated.js"></script>
 
-    <script src="{{asset('assets/libs/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
-    <script src="{{asset('assets/libs/eve/eve.js')}}"></script>
-    <script src="{{asset('assets/libs/flot/flot.js')}}"></script>
-    <script src="{{asset('assets/libs/flot/curvedLines.js')}}"></script>
-    <script src="{{asset('assets/libs/chart-am4/core.js')}}"></script>
-    <script src="{{asset('assets/libs/chart-am4/charts.js')}}"></script>
-    <script src="{{asset('assets/libs/chart-am4/animated.js')}}"></script>
-
-    <!-- Demo -->
-    <script src="{{asset('assets/js/demo.js')}}"></script><script src="assets/js/analytics.js"></script>
-    <script src="{{asset('assets/js/pages/dashboards_index.js')}}"></script>
-</body>
-
-</html> --}}
-
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <title>Empire | B4+ admin template by Srthemesvilla</title>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="Empire Bootstrap admin template made using Bootstrap 4, it has tons of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
-    <meta name="keywords" content="Empire, bootstrap admin template, bootstrap admin panel, bootstrap 4 admin template, admin template">
-    <meta name="author" content="Srthemesvilla" />
-    <link rel="icon" type="image/x-icon" href="{{ URL::asset('assets/img/favicon.ico') }}">
-
-    <!-- Google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-
-    <!-- Icon fonts -->
-
-    <link rel="stylesheet" href="{{asset('assets/fonts/fontawesome.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/fonts/ionicons.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/fonts/linearicons.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/fonts/open-iconic.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/fonts/pe-icon-7-stroke.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/fonts/feather.css')}}">
-
-    <!-- Core stylesheets -->
-    <link rel="stylesheet" href="{{asset('assets/css/bootstrap-material.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/shreerang-material.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/uikit.css')}}">
-
-    <!-- Libs -->
-    <link rel="stylesheet" href="{{asset('assets/libs/perfect-scrollbar/perfect-scrollbar.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/libs/flot/flot.css')}}">
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-</head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-</body>
-    <!-- Core scripts -->
-    <script src="{{ URL::asset('assets/js/pace.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/libs/popper/popper.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/bootstrap.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/sidenav.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/layout-helpers.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/material-ripple.js') }}"></script>
-
-    <!-- Libs -->
-
-    <script src="{{asset('assets/libs/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
-    <script src="{{asset('assets/libs/eve/eve.js')}}"></script>
-    <script src="{{asset('assets/libs/flot/flot.js')}}"></script>
-    <script src="{{asset('assets/libs/flot/curvedLines.js')}}"></script>
-    <script src="{{asset('assets/libs/chart-am4/core.js')}}"></script>
-    <script src="{{asset('assets/libs/chart-am4/charts.js')}}"></script>
-    <script src="{{asset('assets/libs/chart-am4/animated.js')}}"></script>
-
-    <!-- Demo -->
-    <script src="{{asset('assets/js/demo.js')}}"></script><script src="assets/js/analytics.js"></script>
-    <script src="{{asset('assets/js/pages/dashboards_index.js')}}"></script>
-</html>
+<!-- Demo -->
+<script src="assets/js/demo.js"></script><script src="assets/js/analytics.js"></script>
+<script src="assets/js/pages/dashboards_index.js"></script>
+</body></html>
