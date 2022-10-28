@@ -87,7 +87,7 @@ class CyclicteController extends Controller
         $event = Cyclicte::find($id);
         $input = $request->all();
         $event->update($input);
-        return redirect('admin/Cyclicte')->with('flash_message', 'Cyclicte Updated!'); 
+        return redirect('admin/admin/Cyclicte')->with('flash_message', 'Cyclicte Updated!'); 
     }
        /**
      * Remove the specified resource from storage.
@@ -98,7 +98,7 @@ class CyclicteController extends Controller
     public function destroy($id)
     {
         Cyclicte::destroy($id);
-        return redirect('admin/Cyclicte')->with('flash_message', 'Cyclicte deleted!');  
+        return redirect('admin/admin/Cyclicte')->with('flash_message', 'Cyclicte deleted!');  
     }
 
 }

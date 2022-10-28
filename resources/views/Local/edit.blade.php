@@ -18,7 +18,7 @@
   <div class="card-header text-center">Edit Locale</div>
   <div class="card-body">
        
-      <form action="{{ url('admin/locale/' .$association->id) }}" method="post">
+      <form action="{{ url('admin/admin/locale/' .$association->id) }}" method="post">
         {!! csrf_field() !!}
         @method("PATCH")
 
