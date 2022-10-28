@@ -5,27 +5,79 @@
 @section('content')
 <div class="layout-content">
 
+
+
+
 <div class="container-fluid flex-grow-1 container-p-y">
+
+
+
+
 <div class="container">
+
+
+
+
+
+
+
 <div class="card" style="margin:20px;">
   <div class="card-header text-center">Create New Cyclicte</div>
   <div class="card-body">
        
-      <form action="{{ url('admin/comment') }}" method="post">
+      <form action="{{ url('/admin/admin/Cyclicte') }}" method="post" enctype="multipart/form-data">
         {!! csrf_field() !!}
+
         <label>name</label></br>
         <input type="text" name="name" id="name" class="form-control"></br>
-
-
         @error('name')
+
+        <div class="alert alert-danger" role="alert">
+{{$message}}</div>
+        @enderror
+
+
+        <label>description</label></br>
+        <input type="text" name="description" id="description" class="form-control"></br>
+
+        @error('description')
 
 <div class="alert alert-danger" role="alert">
 {{$message}}</div>
 @enderror
 
 
-    
-        <select name="event_id" class="form-control">
+        <label>nbrpersonnes</label></br>
+        <input type="text" name="nbrpersonnes" id="nbrpersonnes" class="form-control"></br>
+
+
+        @error('nbrpersonnes')
+
+<div class="alert alert-danger" role="alert">
+{{$message}}</div>
+@enderror
+
+
+        <label>tarif</label></br>
+        <input type="text" name="tarif" id="tarif" class="form-control"></br>
+
+        @error('tarif')
+
+<div class="alert alert-danger" role="alert">
+{{$message}}</div>
+@enderror
+
+        <label>outilsdetest</label></br>
+        <input type="text" name="outilsdetest" id="outilsdetest" class="form-control"></br>
+
+
+        @error('outilsdetest')
+
+<div class="alert alert-danger" role="alert">
+{{$message}}</div>
+@enderror
+
+<select name="event_id" class="form-control">
   @foreach($event as $item)
 <option value="{{$item->id}}">{{$item->nameevent}}</option>
   @endforeach
@@ -36,7 +88,7 @@
 
 <div class="alert alert-danger" role="alert">
 {{$message}}</div>
-@enderror
+@enderror  
         
 
 

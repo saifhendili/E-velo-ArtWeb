@@ -51,7 +51,7 @@ class CyclicteController extends Controller
 
         $input = $request->all();
         Cyclicte::create($input);
-        return redirect('admin/Cyclicte')->with('flash_message', 'Cyclicte Addedd!');  
+        return redirect('admin/admin/Cyclicte')->with('flash_message', 'Cyclicte Addedd!');  
     }
        /**
      * Display the specified resource.

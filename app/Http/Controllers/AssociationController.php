@@ -48,15 +48,28 @@ class AssociationController extends Controller
 
    ]);
 
+   $file_name = time() . '.' . request()->picture->getClientOriginalExtension();
+    request()->picture->move(public_path('images'), $file_name);
+    
+    $association = new Association;
+
+    $association->nom = $request->nom;
+    $association->description = $request->description;
+    $association->owner = $request->owner;
+    $association->nbdepersonne = $request->nbdepersonne;
+    $association->objective = $request->objective;
+
+    $association->picture = $file_name;
+
+    $association->save();
 
 
-
-        $input = $request->all();
-        $filename=time().$request->file('picture')->getClientOriginalName();
-        $path=$request->file('picture')->storeAs('images',$filename,'public');
-    $input["picture"]='storage/'.$path;
-        Association::create($input);
-        return redirect('admin/association')->with('flash_message', 'Association Addedd!');  
+    //     $input = $request->all();
+    //     $filename=time().$request->file('picture')->getClientOriginalName();
+    //     $path=$request->file('picture')->storeAs('images',$filename,'public');
+    //    $input["picture"]='storage/'.$path;
+    //     Association::create($input);
+        return redirect('admin/admin/association')->with('flash_message', 'Association Addedd!');  
     }
 
     /**
@@ -112,7 +125,7 @@ class AssociationController extends Controller
         $association = Association::find($id);
         $input = $request->all();
         $association->update($input);
-        return redirect('admin/association')->with('flash_message', 'Association Updated!'); 
+        return redirect('admin/admin/association')->with('flash_message', 'Association Updated!'); 
     }
 
     /**
@@ -124,7 +137,7 @@ class AssociationController extends Controller
     public function destroy($id)
     {
         Association::destroy($id);
-        return redirect('admin/association')->with('flash_message', 'Association deleted!');  
+        return redirect('admin/admin/association')->with('flash_message', 'Association deleted!');  
     }
 
 

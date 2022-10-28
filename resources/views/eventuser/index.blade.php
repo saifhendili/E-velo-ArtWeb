@@ -23,7 +23,7 @@
                         </ul>
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="left">
-                                <p>VeloEvent.</p>
+                            <img src="{{ asset('images/' .  $item->picture) }}" class="img img-responsive w-25 h-10px" />
                             </div>
                             <span class="time">{{ $item->dateajout }}</span>
                         </div>

@@ -30,6 +30,17 @@
                         </a>
                         <br/>
                         <br/>
+                        <div class="card-header">
+                        <h5>Search balades : </h5>
+
+                        <form method="GET" action="../admin/searchevent">
+                            @csrf
+                            <div class="search-box">
+                                <input type="text" class="form-control search" name="search" placeholder="Search for...">
+                                <i class="ri-search-line search-icon"></i>
+                            </div>
+                        </form>
+                    </div>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -48,7 +59,7 @@
                                 <tbody>
                                 @foreach($event as $item)
                                     <tr>
-                                    <td><img src="{{ asset($item->picture) }}" class="img img-responsive w-75" /></td>
+                                    <td><img src="{{ asset('images/' .  $item->picture) }}" class="img img-responsive w-25 h-10px" /></td>
 
                                     <td>{{ $item->nameevent }}</td>
                                         <td>{{ $item->place }}</td>

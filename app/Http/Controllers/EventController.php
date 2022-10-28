@@ -32,11 +32,24 @@ class EventController extends Controller
             'velo_id' =>'required'
             
                ]);
-        $input = $request->all();
-        $filename=time().$request->file('picture')->getClientOriginalName();
-        $path=$request->file('picture')->storeAs('images',$filename,'public');
-        $input["picture"]='storage/'.$path;
-        Event::create($input);
+               $file_name = time() . '.' . request()->picture->getClientOriginalExtension();
+               request()->picture->move(public_path('images'), $file_name);
+               
+               $velo = new Event;
+
+               $velo->place = $request->place;
+               $velo->nameevent = $request->nameevent;
+               $velo->dateajout = $request->dateajout;
+               $velo->datefin = $request->datefin;
+               $velo->velo_id = $request->velo_id;
+               $velo->picture = $file_name;
+             
+               $velo->save();
+        // $input = $request->all();
+        // $filename=time().$request->file('picture')->getClientOriginalName();
+        // $path=$request->file('picture')->storeAs('images',$filename,'public');
+        // $input["picture"]='storage/'.$path;
+        // Event::create($input);
         return redirect('admin/admin/event')->with('flash_message', 'event Addedd!');  
     }
     
@@ -82,7 +95,20 @@ class EventController extends Controller
       
         return view('event.CyclicteEvent')->with('eventscyclicte', $eventscyclicte);
     }
-    
+    public function indexFilter(Request $request)
+    {
+        $event  = Event::where('place', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('nameevent', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('dateajout', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('datefin', 'LIKE', '%' . $request->search . '%')
+            
+            ->paginate(2);
+
+        if (count($event) > 0)
+            return view('event.index', compact('event'))->withDetails($event)->withQuery($request->search);
+        else
+            return view('event.index', compact('event'))->withMessage('No Event Details found. Try to search again !');
+    } 
 
 }
 
