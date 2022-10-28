@@ -22,70 +22,71 @@
 
 
 <div class="card" style="margin:20px;">
-  <div class="card-header text-center">Create New Locale</div>
+  <div class="card-header text-center">Create New Balade</div>
   <div class="card-body">
        
-      <form action="{{ url('admin/admin/locale') }}" method="post">
+      <form action="{{ url('admin/balades') }}" method="post" enctype="multipart/form-data">
         {!! csrf_field() !!}
-        <label>Libelle</label></br>
-        <input type="text" name="libelle" id="libelle" class="form-control"></br>
+
+        <label>Adresse</label></br>
+        <input type="text" name="adresse" id="adresse" class="form-control"></br>
+        @error('adresse')
+
+        <div class="alert alert-danger" role="alert">
+{{$message}}</div>
+        @enderror
 
 
-        @error('libelle')
+        <label>nombalade</label></br>
+        <input type="text" name="nombalade" id="nombalade" class="form-control"></br>
+
+        @error('nombalade')
 
 <div class="alert alert-danger" role="alert">
 {{$message}}</div>
 @enderror
 
 
-        <label>Emplacement</label></br>
-        <input type="text" name="emplacement" id="emplacement" class="form-control"></br>
+        <label>dateajout</label></br>
+        <input type="text" name="dateajout" id="dateajout" class="form-control"></br>
 
+
+        @error('dateajout')
+
+<div class="alert alert-danger" role="alert">
+{{$message}}</div>
+@enderror
+
+
+        <label>datefin</label></br>
+        <input type="text" name="datefin" id="datefin" class="form-control"></br>
+
+        @error('datefin')
+
+<div class="alert alert-danger" role="alert">
+{{$message}}</div>
+@enderror
+
+        <label>numero</label></br>
+        <input type="text" name="numero" id="numero" class="form-control"></br>
+
+
+        @error('numero')
+
+<div class="alert alert-danger" role="alert">
+{{$message}}</div>
+@enderror
 
         
-        @error('emplacement')
+        <label>Picture</label></br>
+        <input  name="picture" id="picture"  class="form-control" type="file"></br>
+
+
+        @error('picture')
 
 <div class="alert alert-danger" role="alert">
 {{$message}}</div>
 @enderror
-
-
-        <label>Responsable</label></br>
-        <input type="text" name="responsable" id="responsable" class="form-control"></br>
-
-
-        
-        @error('responsable')
-
-<div class="alert alert-danger" role="alert">
-{{$message}}</div>
-@enderror
-
-
-        <label>Superficie</label></br>
-        <input type="int" name="superficie" id="superficie" class="form-control"></br>
-
-        
-        @error('superficie')
-
-<div class="alert alert-danger" role="alert">
-{{$message}}</div>
-@enderror
-
-     
-        <select name="association_id" class="form-control">
-  @foreach($association as $item)
-<option value="{{$item->id}}">{{$item->nom}}</option>
-  @endforeach
-</select>
-
-
-@error('association_id')
-
-<div class="alert alert-danger" role="alert">
-{{$message}}</div>
-@enderror
-        
 
 
         <input type="submit" value="Save" class="btn btn-success mt-3"></br>

@@ -25,9 +25,7 @@
                         <h2>Event</h2>
                     </div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/admin/event/create') }}" class="btn btn-success btn-sm" title="Add New Event">
-                            Add New Event
-                        </a>
+                        
                         <br/>
                         <br/>
                         <div class="table-responsive">
@@ -46,29 +44,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($event as $item)
+                                @foreach($eventscyclicte->getCyclicte as $item)
+                                @foreach($baladesubscribs->getSubscription as $item)
                                     <tr>
-                                    <td><img src="{{ asset($item->picture) }}" class="img img-responsive w-75" /></td>
+        
 
-                                    <td>{{ $item->nameevent }}</td>
-                                        <td>{{ $item->place }}</td>
-                                        <td>{{ $item->dateajout }}</td>
+                                     <td>{{ $item->nomsubscriber }}</td>
+                                        <td>{{ $item->biketype }}</td>
+                                        <td>{{ $item->age }}</td>
                                      
-                                        <td>{{ $item->datefin }}</td>
-                                        <td>{{ $item->velo_id }}</td>
+                                        <td>{{ $item->adress }}</td>
+            
 
-                                        <td>
-                                            <a href="{{ url('/admin/admin/event/' . $item->id) }}" title="View Event"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/admin/event/' . $item->id . '/edit') }}" title="Edit Event"><button class="btn btn-primary btn-sm"><i class="feather icon-edit-2" aria-hidden="true"></i> Edit</button></a>
-                                            <a href="{{ url('/admin/admin/Cyclicte/' . $item->id . '/getCyclicte') }}" title="Cyclictes "><button class="btn btn-secondary btn-sm"><i class="feather icon-bell" aria-hidden="true"></i> Cuclyctes</button></a>
-
-  
-                                            <form method="POST" action="{{ url('/admin/admin/event' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Event" onclick="return confirm("Confirm delete?")"><i class="feather icon-delete" aria-hidden="true"></i> Delete</button>
-                                            </form>
-                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

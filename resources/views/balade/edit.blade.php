@@ -14,81 +14,91 @@
 
 
 <div class="container">
-
-
-
-
-
-
-
 <div class="card" style="margin:20px;">
-  <div class="card-header text-center">Create New Locale</div>
+  <div class="card-header">Edit Balade</div>
   <div class="card-body">
        
-      <form action="{{ url('admin/admin/locale') }}" method="post">
+      <form action="{{ url('admin/balades/' .$balade->id) }}" method="post">
         {!! csrf_field() !!}
-        <label>Libelle</label></br>
-        <input type="text" name="libelle" id="libelle" class="form-control"></br>
+        @method("PATCH")
 
 
-        @error('libelle')
-
-<div class="alert alert-danger" role="alert">
-{{$message}}</div>
-@enderror
+        <input type="hidden" name="id" id="id" value="{{$balade->id}}" id="id" />
+       
 
 
-        <label>Emplacement</label></br>
-        <input type="text" name="emplacement" id="emplacement" class="form-control"></br>
 
 
-        
-        @error('emplacement')
+        <label>adresse</label></br>
+        <input type="text" name="adresse" id="adresse" value="{{$balade->adresse}}" class="form-control"></br>
+
+
+
+        @error('adresse')
 
 <div class="alert alert-danger" role="alert">
 {{$message}}</div>
 @enderror
 
 
-        <label>Responsable</label></br>
-        <input type="text" name="responsable" id="responsable" class="form-control"></br>
+        <label>nombalade</label></br>
+        <input type="text" name="nombalade" id="nombalade" value="{{$balade->nombalade}}" class="form-control"></br>
 
-
-        
-        @error('responsable')
+        @error('nombalade')
 
 <div class="alert alert-danger" role="alert">
 {{$message}}</div>
 @enderror
 
 
-        <label>Superficie</label></br>
-        <input type="int" name="superficie" id="superficie" class="form-control"></br>
 
-        
-        @error('superficie')
+        <label>dateajout</label></br>
+        <input type="text" name="dateajout" value="{{$balade->dateajout}}" id="dateajout" class="form-control"></br>
+
+
+
+        @error('dateajout')
 
 <div class="alert alert-danger" role="alert">
 {{$message}}</div>
 @enderror
 
+
+        <label>datefin</label></br>
+        <input type="text" name="datefin" value="{{$balade->datefin}}" id="datefin" class="form-control"></br>
+        @error('datefin')
+
+<div class="alert alert-danger" role="alert">
+{{$message}}</div>
+@enderror
      
-        <select name="association_id" class="form-control">
-  @foreach($association as $item)
-<option value="{{$item->id}}">{{$item->nom}}</option>
-  @endforeach
-</select>
+
+        
+        <label>picture</label></br>
+        <input type="text" name="picture" value="{{$balade->picture}}" id="picture" class="form-control"></br>
 
 
-@error('association_id')
+        @error('picture')
 
 <div class="alert alert-danger" role="alert">
 {{$message}}</div>
 @enderror
-        
 
 
-        <input type="submit" value="Save" class="btn btn-success mt-3"></br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <input type="submit" value="Update" class="btn btn-success"></br>
     </form>
     
   </div>
@@ -96,24 +106,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     
     </div>
 
 

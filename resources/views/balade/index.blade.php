@@ -22,57 +22,75 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Event</h2>
+                        <h2>Balade</h2>
                     </div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/admin/event/create') }}" class="btn btn-success btn-sm" title="Add New Event">
-                            Add New Event
+                        <a href="{{ url('/admin/balades/create') }}" class="btn btn-success btn-sm" title="Add New Event">
+                            Add New Balade
                         </a>
                         <br/>
                         <br/>
+                        <div class="card-header">
+                        <h5>Search balades : </h5>
+
+                        <form method="GET" action="../admin/searchBalade">
+                            @csrf
+                            <div class="search-box">
+                                <input type="text" class="form-control search" name="search" placeholder="Search for...">
+                                <i class="ri-search-line search-icon"></i>
+                            </div>
+                        </form>
+                    </div>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
                                     <th>Picture</th>
-                                        <th>Nameevent</th>
-                                        <th>Place</th>
+                                        <th>Nombalade</th>
+                                        <th>Adresse</th>
                                         <th>DATEAjout</th>
 
                                         <th>DateFin</th>
-                                        <th>Velo_id</th>
+                                        <th>Numero</th>
 
                                         <th class="text-center">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($event as $item)
+                                @foreach($balade as $item)
                                     <tr>
-                                    <td><img src="{{ asset($item->picture) }}" class="img img-responsive w-75" /></td>
+                                    <td>
+                                    
+                
+    <img src="{{ asset('images/' .  $item->picture) }}" class="img img-responsive w-25 h-10px" /> </td>
 
-                                    <td>{{ $item->nameevent }}</td>
-                                        <td>{{ $item->place }}</td>
+                                    <td>{{ $item->nombalade }}</td>
+                                        <td>{{ $item->adresse }}</td>
                                         <td>{{ $item->dateajout }}</td>
                                      
                                         <td>{{ $item->datefin }}</td>
-                                        <td>{{ $item->velo_id }}</td>
+                                        <td>{{ $item->numero }}</td>
 
                                         <td>
-                                            <a href="{{ url('/admin/admin/event/' . $item->id) }}" title="View Event"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/admin/event/' . $item->id . '/edit') }}" title="Edit Event"><button class="btn btn-primary btn-sm"><i class="feather icon-edit-2" aria-hidden="true"></i> Edit</button></a>
-                                            <a href="{{ url('/admin/admin/Cyclicte/' . $item->id . '/getCyclicte') }}" title="Cyclictes "><button class="btn btn-secondary btn-sm"><i class="feather icon-bell" aria-hidden="true"></i> Cuclyctes</button></a>
+                                            <a href="{{ url('/admin/balades/' . $item->id) }}" title="View Balade"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/admin/balades/' . $item->id . '/edit') }}" title="Edit Event"><button class="btn btn-primary btn-sm"><i class="feather icon-edit-2" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/balades/' . $item->id . '/getSubscription') }}" title="Subscribers "><button class="btn btn-secondary btn-sm"><i class="feather icon-bell" aria-hidden="true"></i> Subscribers</button></a>
 
   
-                                            <form method="POST" action="{{ url('/admin/admin/event' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            <form method="POST" action="{{ url('/admin/balades' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Event" onclick="return confirm("Confirm delete?")"><i class="feather icon-delete" aria-hidden="true"></i> Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Balade" onclick="return confirm("Confirm delete?")"><i class="feather icon-delete" aria-hidden="true"></i> Delete</button>
                                             </form>
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
+                            {{-- Pagination --}}
+                        <div class="d-flex justify-content-center ">
+                            {!! $balade->links('pagination::bootstrap-4') !!}
+                        </div>
                         </div>
 
 

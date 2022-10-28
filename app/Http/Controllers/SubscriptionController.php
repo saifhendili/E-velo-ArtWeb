@@ -3,31 +3,53 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Event;
-use App\Models\Cyclicte;
-class CyclicteController extends Controller
+use App\Models\Subscription;
+use App\Models\Balade;
+class SubscriptionController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $events=Cyclicte::all();
-        return View('Cyclicte.index')->with('events', $events);
+
+      //  $subscription = Subscription::latest()->get();
+       // return view ('Subs.index')->with('balade', $balade);
+     //   $events=Cyclicte::all();
+       // return View('Cyclicte.index')->with('events', $events);
     }
-      /**
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public static function subscriptionBalade($id)
+    {
+        //$programmes = Programme::get();
+
+        $balade = Balade::find($id);
+
+        //$activities = Activities::get();
+        return $balade->nombalade;
+
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        $event=Event::all();
-        return View('Cyclicte.create')->with('event', $event);
+        $balades=Balade::get();
+        return view("subscription.create" ,compact("balades"));
     }
-     /**
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -35,25 +57,19 @@ class CyclicteController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $request->validate([
-            'name' =>'required',
-            'description' =>'required',
-            'nbrpersonnes' =>'required',
-            'tarif' =>'required | min:1 | numeric',
-            'outilsdetest' =>'required',
-            'event_id' =>'required',
-            
-
-            
+            'nomsubscriber' =>'required',
+            'biketype' =>'required',
+            'age' =>'required ',
+            'gender' =>'required',
                ]);
-
         $input = $request->all();
-        Cyclicte::create($input);
-        return redirect('admin/Cyclicte')->with('flash_message', 'Cyclicte Addedd!');  
+        
+        Subscription::create($input);
+        return redirect('admin/balades')->with('flash_message', 'subscription Addedd!');
     }
-       /**
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -61,10 +77,10 @@ class CyclicteController extends Controller
      */
     public function show($id)
     {
-        $event = Cyclicte::find($id);
-        return view('Cyclicte.show')->with('event', $event);
+        //
     }
-      /**
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -72,10 +88,10 @@ class CyclicteController extends Controller
      */
     public function edit($id)
     {
-        $event = Cyclicte::find($id);
-        return view('Cyclicte.edit')->with('event', $event);
+        //
     }
-      /**
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -84,12 +100,10 @@ class CyclicteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $event = Cyclicte::find($id);
-        $input = $request->all();
-        $event->update($input);
-        return redirect('admin/admin/Cyclicte')->with('flash_message', 'Cyclicte Updated!'); 
+        //
     }
-       /**
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -97,8 +111,8 @@ class CyclicteController extends Controller
      */
     public function destroy($id)
     {
-        Cyclicte::destroy($id);
-        return redirect('admin/admin/Cyclicte')->with('flash_message', 'Cyclicte deleted!');  
+        //
     }
 
+    
 }

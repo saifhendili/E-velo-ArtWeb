@@ -6,18 +6,18 @@ use Illuminate\Http\Request;
 
 use DB;
 use App\Models\Event;
-class EventController extends Controller
+class EventUserController extends Controller
 {   public function index()
     {
        
     
         $event = Event::all();
-        return view ('event.index')->with('event', $event);
+        return view ('eventuser.index')->with('event', $event);
     }
     
     public function create()
     {
-        return view('event.create');
+        return view('eventuser.create');
     }
   
     public function store(Request $request)
@@ -35,21 +35,21 @@ class EventController extends Controller
         $input = $request->all();
         $filename=time().$request->file('picture')->getClientOriginalName();
         $path=$request->file('picture')->storeAs('images',$filename,'public');
-        $input["picture"]='storage/'.$path;
+    $input["picture"]='storage/'.$path;
         Event::create($input);
-        return redirect('admin/admin/event')->with('flash_message', 'event Addedd!');  
+        return redirect('eventuser')->with('flash_message', 'event Addedd!');  
     }
     
     public function show($id)
     {
         $event = Event::find($id);
-        return view('event.show')->with('event', $event);
+        return view('eventuser.show')->with('event', $event);
     }
     
     public function edit($id)
     {
         $event = Event::find($id);
-        return view('event.edit')->with('event', $event);
+        return view('eventuser.edit')->with('event', $event);
     }
   
     public function update(Request $request, $id)
@@ -67,22 +67,13 @@ class EventController extends Controller
         $event = Event::find($id);
         $input = $request->all();
         $event->update($input);
-        return redirect('admin/admin/event')->with('flash_message', 'event Updated!');  
+        return redirect('eventuser')->with('flash_message', 'event Updated!');  
     }
   
     public function destroy($id)
     {
         Event::destroy($id);
-        return redirect('admin/admin/event')->with('flash_message', 'Event deleted!');  
+        return redirect('eventuser')->with('flash_message', 'Event deleted!');  
     }
-    public function getCyclicte($event_id)
-    {
-        $eventscyclicte = Event::find($event_id);
-
-      
-        return view('event.CyclicteEvent')->with('eventscyclicte', $eventscyclicte);
-    }
-    
-
-}
+         }
 
