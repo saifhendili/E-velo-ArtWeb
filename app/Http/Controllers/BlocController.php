@@ -22,7 +22,7 @@ class BlocController extends Controller
     {
         $input = $request->all();
         Bloc::create($input);
-        return redirect('bloc')->with('flash_message', 'Blog Addedd!');  
+        return redirect('admin/bloc')->with('flash_message', 'Blog Addedd!');  
     }
     
     public function show($id)
@@ -42,12 +42,12 @@ class BlocController extends Controller
         $bloc = Bloc::find($id);
         $input = $request->all();
         $bloc->update($input);
-        return redirect('bloc')->with('flash_message', 'Blog Updated!');  
+        return redirect('admin/bloc')->with('flash_message', 'Blog Updated!');  
     }
   
     public function destroy($id)
     {
         Bloc::destroy($id);
-        return redirect('bloc')->with('flash_message', 'Blog deleted!');  
+        return redirect('admin/bloc')->with('flash_message', 'Blog deleted!');  
     }
 }

@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\BlogUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VeloController;
 use App\Http\Controllers\BlocController;
@@ -7,8 +7,13 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\BaladeController;
 use App\Http\Controllers\AssociationController;
 use App\Http\Controllers\SubscriptionController;
+
+
 use App\Http\Controllers\LocalController;
 use App\Http\Controllers\CyclicteController;
+
+use App\Http\Controllers\EventUserController;
+use App\Http\Controllers\AssociationUserController;
 
 
 
@@ -39,9 +44,9 @@ Route::delete("destroyVelo/{id}",[VeloController::class,'destroyVelo']);
 //Route::put("EditEvent/{id}", [EventController::class,'EditEvent']);
 //Route::get("getAllEvents", [EventController::class,'getAllEvents']);
 //Route::delete("destroyEvent/{id}",[EventController::class,'destroyEvent']);
-Route::resource('event',EventController::class);
+Route::resource('/admin/event',EventController::class);
 
-Route::resource('Cyclicte',CyclicteController::class);
+Route::resource('/admin/Cyclicte',CyclicteController::class);
 
 Route::resource("/admin/association",AssociationController::class);
 Route::resource("/admin/locale",LocalController::class);
@@ -52,16 +57,18 @@ Route::get('/admin/locale/{association_id}/getLocals', [\App\Http\Controllers\As
 Route::get('subscriptions/{event_id}/getCyclicte', [\App\Http\Controllers\EventController::class , 'getCyclicte'] );
 Route::get('balades/{balade_id}/getSubscription', [\App\Http\Controllers\BaladeController::class , 'getSubscription'] );
 Route::get('/searchBalade', 'App\Http\Controllers\BaladeController@indexFilter');
+
+Route::get('/locale/{association_id}/getLocals', [\App\Http\Controllers\AssociationController::class , 'getLocals'] );
+Route::get('/admin/Cyclicte/{event_id}/getCyclicte', [\App\Http\Controllers\EventController::class , 'getCyclicte'] );
+
 });
-
-
+Route::resource('blog',BlogUserController::class);
+Route::resource('eventuser',EventUserController::class);
+Route::resource('associationuser',AssociationUserController::class);
 
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
