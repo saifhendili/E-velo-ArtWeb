@@ -2,15 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VeloController;
-use App\Http\Controllers\BlocController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EventController;
 
 use App\Http\Controllers\AssociationController;
 use App\Http\Controllers\BlogUserController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LocalController;
 use App\Http\Controllers\CyclicteController;
-
-
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ Route::get('/', [\App\Http\Controllers\MainController::class , 'index'] );
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 
     Route::resource('velos',VeloController::class);
-    Route::resource('bloc',BlocController::class);
+    Route::resource('blog',BlogController::class);
     Route::post("AddVelo", [VeloController::class,'AddVelo']);
 Route::put("EditVelo/{id}", [VeloController::class,'EditVelo']);
 Route::get("AllVelo", [VeloController::class,'getAllVelos']);
@@ -49,7 +49,13 @@ Route::resource("/admin/locale",LocalController::class);
 Route::get('/locale/{association_id}/getLocals', [\App\Http\Controllers\AssociationController::class , 'getLocals'] );
 Route::get('/admin/Cyclicte/{event_id}/getCyclicte', [\App\Http\Controllers\EventController::class , 'getCyclicte'] );
 });
-Route::resource('blog',BlogUserController::class);
+Route::resource('blogs',BlogUserController::class);
+
+
+ Route::get('/admin/blog/{blog_id}/getComment', [\App\Http\Controllers\BlogController::class , 'getComment'] );
+ Route::get('/blogs/{blog_id}/getComment', [\App\Http\Controllers\BlogUserController::class , 'getComment']);
+ Route::resource('/comment',CommentController::class);
+ Route::get('comment/create/{id}',[CommentController::class,'create']);
 
 Auth::routes();
 

@@ -5,9 +5,9 @@
   <div class="card-body">
   
         <div class="card-body">
-        <h5 class="card-title">Title : {{ $bloc->Title }}</h5>
-        <h5 class="card-title">Description : {{ $bloc->Description }}</h5>
-        <h5 class="card-title">Picture : {{ $bloc->Picture }}</h5>
+        <h5 class="card-title">Title : {{ $blog->Title }}</h5>
+        <h5 class="card-title">Description : {{ $blog->Description }}</h5>
+        <h5 class="card-title">Picture : {{ $blog->Picture }}</h5>
   </div>
       
     </hr>

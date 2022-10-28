@@ -2,37 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Locale;
-use App\Models\Association;
-
-
 use Illuminate\Http\Request;
-
-class LocalController extends Controller
+use App\Models\Blog;
+use App\Models\Comments;
+class CommentController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $associations=Locale::all();
-        return View('Local.index')->with('associations', $associations);
+        $blogs=Comments::all();
+        return View('comment.index')->with('blogs', $blogs);
     }
-
-    /**
+      /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $association=Association::all();
-        return View('Local.create')->with('association', $association);
+        $Blog=Blog::all();
+        return View('comment.create')->with('Blog', $Blog);
     }
-
-    /**
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -43,23 +38,14 @@ class LocalController extends Controller
 
 
         $request->validate([
-            'libelle' =>'required',
-            'emplacement' =>'required',
-            'responsable' =>'required',
-            'superficie' =>'required | min:1 | numeric',
-            'association_id' =>'required',
-  
+            'cmnt' =>'required',
+            'blog_id' =>'required', 
                ]);
-
-
-
-
         $input = $request->all();
-        Locale::create($input);
-        return redirect('admin/locale')->with('flash_message', 'Locale Addedd!');  
+        Comments::create($input);
+        return redirect('blogs')->with('flash_message', 'Comments Addedd!');  
     }
-
-    /**
+       /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -67,11 +53,10 @@ class LocalController extends Controller
      */
     public function show($id)
     {
-        $associations = Locale::find($id);
-        return view('Local.show')->with('associations', $associations);
+        $Blog = Comments::find($id);
+        return view('comment.show')->with('Blog', $Blog);
     }
-
-    /**
+      /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -79,11 +64,10 @@ class LocalController extends Controller
      */
     public function edit($id)
     {
-        $association = Locale::find($id);
-        return view('Local.edit')->with('association', $association);
+        $Blog = Comments::find($id);
+        return view('comment.edit')->with('Blog', $Blog);
     }
-
-    /**
+      /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -92,14 +76,12 @@ class LocalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $association = Locale::find($id); 
-        //test
+        $Blog = Comments::find($id);
         $input = $request->all();
-        $association->update($input);
-        return redirect('admin/locale')->with('flash_message', 'Locale Updated!'); 
+        $Blog->update($input);
+        return redirect('admin/comment')->with('flash_message', 'Comments Updated!'); 
     }
-
-    /**
+       /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -107,7 +89,8 @@ class LocalController extends Controller
      */
     public function destroy($id)
     {
-        Locale::destroy($id);
-        return redirect('admin/locale')->with('flash_message', 'Locale deleted!');  
+        Comments::destroy($id);
+        return redirect('admin/comment')->with('flash_message', 'Comments deleted!');  
     }
+
 }

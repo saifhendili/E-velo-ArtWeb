@@ -265,7 +265,7 @@
 
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('bloc.index') }}">Blog</a>
+                                    <a class="nav-link" href="{{ route('blog.index') }}">Blog</a>
                                 </li>
 
                                 <li class="nav-item">

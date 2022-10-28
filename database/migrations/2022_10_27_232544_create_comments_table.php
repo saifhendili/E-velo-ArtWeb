@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bloc', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->String("Title");
-            $table->String("Description");
-            $table->String("Picture");
+            $table->string('cmnt');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bloc');
+        Schema::dropIfExists('comments');
     }
 };

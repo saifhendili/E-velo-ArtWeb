@@ -62,6 +62,7 @@
 <link href="assets/assetss/css/nice-select.css" rel="stylesheet">
 
 <link href="assets/assetss/css/style.css" rel="stylesheet">
+<link href="assets/blogusercomment.css" rel="stylesheet">
 
 <link href="assets/assetss/css/responsive.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
@@ -288,7 +289,7 @@
                                 </li>
                                 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('bloc.index') }}">Blog</a>
+                                    <a class="nav-link" href="{{ route('blog.index') }}">Blog</a>
                                 </li>
 
                                 <li class="nav-item">
@@ -339,7 +340,8 @@
     <div class="layout-overlay layout-sidenav-toggle"></div>
 </div>
 <!-- [ Layout wrapper] End -->
-
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v15.0" nonce="9JqoVSh8"></script>
 <!-- Core scripts -->
 <script src="assets/js/pace.js"></script>
 <script src="assets/js/jquery-3.3.1.min.js"></script>

@@ -4,41 +4,39 @@
 
 @section('content')
 <div class="layout-content">
-
 <div class="container-fluid flex-grow-1 container-p-y">
+
 <div class="container">
 <div class="card" style="margin:20px;">
   <div class="card-header text-center">Create New Cyclicte</div>
   <div class="card-body">
        
-      <form action="{{ url('admin/comment') }}" method="post">
+      <form action="{{ url('/comment') }}" method="post">
         {!! csrf_field() !!}
-        <label>name</label></br>
-        <input type="text" name="name" id="name" class="form-control"></br>
 
+        <label>Commentaire</label></br>
+        <input type="text" name="cmnt" id="cmnt" class="form-control"></br>
 
-        @error('name')
+        @error('cmnt')
 
 <div class="alert alert-danger" role="alert">
 {{$message}}</div>
 @enderror
 
-
-    
-        <select name="event_id" class="form-control">
-  @foreach($event as $item)
-<option value="{{$item->id}}">{{$item->nameevent}}</option>
+      
+        <select  name="blog_id" class="form-control" hidden>
+  @foreach($Blog as $item)
+<option value={{ request()->id }}></option>
   @endforeach
 </select>
 
 
-@error('event_id')
+@error('blog_id')
 
 <div class="alert alert-danger" role="alert">
 {{$message}}</div>
 @enderror
         
-
 
         <input type="submit" value="Save" class="btn btn-success mt-3"></br>
     </form>
