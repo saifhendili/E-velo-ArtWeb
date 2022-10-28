@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VeloController;
 use App\Http\Controllers\BlocController;
 use App\Http\Controllers\EventController;
-
+use App\Http\Controllers\BaladeController;
 use App\Http\Controllers\AssociationController;
-
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\LocalController;
 use App\Http\Controllers\CyclicteController;
 
@@ -45,11 +45,13 @@ Route::resource('Cyclicte',CyclicteController::class);
 
 Route::resource("/admin/association",AssociationController::class);
 Route::resource("/admin/locale",LocalController::class);
-
-
+Route::resource("/balades", BaladeController::class);
+Route::resource("/subscriptions", SubscriptionController::class);
+//Route::resource("/admin/subscriptions", SubscriptionController::class);
 Route::get('/admin/locale/{association_id}/getLocals', [\App\Http\Controllers\AssociationController::class , 'getLocals'] );
-Route::get('Cyclicte/{event_id}/getCyclicte', [\App\Http\Controllers\EventController::class , 'getCyclicte'] );
-
+Route::get('subscriptions/{event_id}/getCyclicte', [\App\Http\Controllers\EventController::class , 'getCyclicte'] );
+Route::get('balades/{balade_id}/getSubscription', [\App\Http\Controllers\BaladeController::class , 'getSubscription'] );
+Route::get('/searchBalade', 'App\Http\Controllers\BaladeController@indexFilter');
 });
 
 
@@ -62,3 +64,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
