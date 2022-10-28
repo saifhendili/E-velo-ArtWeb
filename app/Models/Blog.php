@@ -9,8 +9,7 @@ class Blog extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'description',
-    ];
+        'description'];
     public function getComment()
     {
         return $this->hasMany(Comments::class,'blog_id','id');	

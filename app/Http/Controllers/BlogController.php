@@ -22,8 +22,14 @@ class BlogController extends Controller
   
     public function store(Request $request)
     {
-        $input = $request->all();
-        Blog::create($input);
+        $request->validate([
+            'description' =>'required',
+               ]);
+           
+               $blog = new Blog;
+               $blog->description = $request->description;
+               $blog->save();
+    
         return redirect('admin/blog')->with('flash_message', 'Blog Addedd!');  
     }
     

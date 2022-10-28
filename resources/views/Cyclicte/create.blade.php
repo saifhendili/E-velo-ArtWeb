@@ -11,7 +11,7 @@
   <div class="card-header text-center">Create New Cyclicte</div>
   <div class="card-body">
        
-      <form action="{{ url('admin/comment') }}" method="post">
+      <form action="{{ url('admin/admin/Cyclicte') }}" method="post">
         {!! csrf_field() !!}
         <label>name</label></br>
         <input type="text" name="name" id="name" class="form-control"></br>

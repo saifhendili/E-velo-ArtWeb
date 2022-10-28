@@ -36,7 +36,6 @@ class CyclicteController extends Controller
     public function store(Request $request)
     {
 
-
         $request->validate([
             'name' =>'required',
             'description' =>'required',
@@ -46,12 +45,11 @@ class CyclicteController extends Controller
             'event_id' =>'required',
             
 
-            
                ]);
 
         $input = $request->all();
         Cyclicte::create($input);
-        return redirect('admin/Cyclicte')->with('flash_message', 'Cyclicte Addedd!');  
+        return redirect('admin/admin/Cyclicte')->with('flash_message', 'Cyclicte Addedd!');  
     }
        /**
      * Display the specified resource.

@@ -25,7 +25,7 @@
   <div class="card-header text-center">Create New subscription</div>
   <div class="card-body">
        
-      <form action="{{ url('admin/subscriptions') }}" method="post" enctype="multipart/form-data">
+      <form action="{{ url('subscriptions') }}" method="post" enctype="multipart/form-data">
         {!! csrf_field() !!}
 
         <label>nomsubscriber</label></br>

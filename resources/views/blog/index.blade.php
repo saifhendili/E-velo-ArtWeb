@@ -27,6 +27,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>img</th>
                                         <th>Description</th>
                                   
                                     </tr>
@@ -35,6 +36,7 @@
                                 @foreach($blog as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <img src="{{ asset('images/' .  $item->picture) }}" class="img img-responsive w-25 h-10px" /> </td>
                                         <td>{{ $item->description }}</td>
                                
                                  

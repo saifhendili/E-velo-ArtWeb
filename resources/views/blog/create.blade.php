@@ -9,6 +9,11 @@
         <label>Publication</label></br>
         <input type="text" name="description" id="description" class="form-control"></br>
 
+        @error('description')
+
+        <div class="alert alert-danger" role="alert">
+        {{$message}}</div>
+        @enderror
         <input type="submit" value="Save" class="btn btn-success"></br>
     </form>
         
