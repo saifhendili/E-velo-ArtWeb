@@ -9,9 +9,9 @@ use App\Http\Controllers\AssociationController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LocalController;
 use App\Http\Controllers\CyclicteController;
+use App\Http\Controllers\EventUserController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SubscriptionController;
-use App\Http\Controllers\EventUserController;
 use App\Http\Controllers\AssociationUserController;
 
 
@@ -54,6 +54,7 @@ Route::resource("/balades", BaladeController::class);
 Route::get('/admin/locale/{association_id}/getLocals', [\App\Http\Controllers\AssociationController::class , 'getLocals'] );
 Route::get('balades/{balade_id}/getSubscription', [\App\Http\Controllers\BaladeController::class , 'getSubscription'] );
 Route::get('/searchBalade', 'App\Http\Controllers\BaladeController@indexFilter');
+Route::get('/searchevent', 'App\Http\Controllers\EventController@indexFilter');
 
 Route::get('/admin/locale/{association_id}/getLocals', [\App\Http\Controllers\AssociationController::class , 'getLocals'] );
 Route::get('/admin/Cyclicte/{event_id}/getCyclicte', [\App\Http\Controllers\EventController::class , 'getCyclicte'] );

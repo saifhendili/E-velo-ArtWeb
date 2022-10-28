@@ -25,7 +25,7 @@
   <div class="card-header text-center">Create New association</div>
   <div class="card-body">
        
-      <form action="{{ url('admin/association') }}" method="post" enctype="multipart/form-data">
+      <form action="{{ url('admin/admin/association') }}" method="post" enctype="multipart/form-data">
         {!! csrf_field() !!}
 
         <label>Nom</label></br>

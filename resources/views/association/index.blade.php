@@ -25,7 +25,7 @@
                         <h2>Association</h2>
                     </div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/association/create') }}" class="btn btn-success btn-sm" title="Add New Student">
+                        <a href="{{ url('/admin/admin/association/create') }}" class="btn btn-success btn-sm" title="Add New Student">
                             Add New Association
                         </a>
                         <br/>
@@ -48,7 +48,7 @@
                                 <tbody>
                                 @foreach($associations as $item)
                                     <tr>
-                                    <td><img src="{{ asset($item->picture) }}" class="img img-responsive w-75" /></td>
+                                    <td><img src="{{ asset('images/' .  $item->picture) }}" class="img img-responsive w-25 h-10px" /></td>
 
                                     <td>{{ $item->nom }}</td>
                                         <td>{{ $item->owner }}</td>
@@ -57,9 +57,9 @@
                                         <td>{{ $item->objective }}</td>
 
                                         <td>
-                                            <a href="{{ url('/admin/association/' . $item->id) }}" title="View Association"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/association/' . $item->id . '/edit') }}" title="Edit Association"><button class="btn btn-primary btn-sm"><i class="feather icon-edit-2" aria-hidden="true"></i> Edit</button></a>
-                                            <a href="{{ url('/admin/locale/' . $item->id . '/getLocals') }}" title="Events "><button class="btn btn-secondary btn-sm"><i class="feather icon-bell" aria-hidden="true"></i> Locals</button></a>
+                                            <a href="{{ url('/admin/admin/association/' . $item->id) }}" title="View Association"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/admin/admin/association/' . $item->id . '/edit') }}" title="Edit Association"><button class="btn btn-primary btn-sm"><i class="feather icon-edit-2" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/admin/locale/' . $item->id . '/getLocals') }}" title="Events "><button class="btn btn-secondary btn-sm"><i class="feather icon-bell" aria-hidden="true"></i> Locals</button></a>
 
   
                                             <form method="POST" action="{{ url('/admin/association' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">

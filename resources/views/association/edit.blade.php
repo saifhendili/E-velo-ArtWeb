@@ -18,7 +18,7 @@
   <div class="card-header">Edit Association</div>
   <div class="card-body">
        
-      <form action="{{ url('admin/association/' .$association->id) }}" method="post">
+      <form action="{{ url('admin/admin/association/' .$association->id) }}" method="post">
         {!! csrf_field() !!}
         @method("PATCH")
 

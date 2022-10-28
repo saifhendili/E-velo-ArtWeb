@@ -25,6 +25,7 @@
                             <div class="left">
                                 <p>{{ $item->owner }}.</p>
                             </div>
+                            <img src="{{ asset('images/' .  $item->picture) }}" class="img img-responsive w-25 h-10px" />
                             <span class="time">{{ $item->objective }}</span>
                         </div>
                     </div>
