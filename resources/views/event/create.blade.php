@@ -25,7 +25,7 @@
   <div class="card-header text-center">Create New Event</div>
   <div class="card-body">
        
-      <form action="{{ url('admin/event') }}" method="post" enctype="multipart/form-data">
+      <form action="{{ url('/admin/admin/event') }}" method="post" enctype="multipart/form-data">
         {!! csrf_field() !!}
 
         <label>place</label></br>

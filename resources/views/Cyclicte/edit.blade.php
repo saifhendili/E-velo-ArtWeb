@@ -18,7 +18,7 @@
   <div class="card-header text-center">Edit Cyclicte</div>
   <div class="card-body">
        
-      <form action="{{ url('admin/Cyclicte/' .$event->id) }}" method="post">
+      <form action="{{ url('admin/admin/Cyclicte/' .$event->id) }}" method="post">
         {!! csrf_field() !!}
         @method("PATCH")
 

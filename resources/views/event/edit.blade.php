@@ -18,7 +18,7 @@
   <div class="card-header">Edit Event</div>
   <div class="card-body">
        
-      <form action="{{ url('admin/event/' .$event->id) }}" method="post">
+      <form action="{{ url('admin/admin/event/' .$event->id) }}" method="post">
         {!! csrf_field() !!}
         @method("PATCH")
 

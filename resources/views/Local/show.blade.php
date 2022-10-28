@@ -28,33 +28,28 @@
         <div class="form-group">
     <label for="exampleInputEmail1">Libelle</label>
     <input type="text" class="form-control"  disabled aria-describedby="emailHelp"  value="{{ $associations->libelle }}">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">Emplacement</label>
     <input type="text" class="form-control"  disabled aria-describedby="emailHelp"  value="{{ $associations->emplacement }}">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
 
 
   <div class="form-group">
     <label for="exampleInputEmail1">Responsable</label>
     <input type="text" class="form-control"  disabled aria-describedby="emailHelp"  value="{{ $associations->responsable }}">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">Superficie</label>
     <input type="text" class="form-control"  disabled aria-describedby="emailHelp"  value="{{ $associations->superficie }}">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
 
 
   <div class="form-group">
     <label for="exampleInputEmail1">Description</label>
     <input type="email" class="form-control"  disabled aria-describedby="emailHelp"  value="{{ $associations->description }}">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
 
 

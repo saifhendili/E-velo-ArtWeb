@@ -31,33 +31,28 @@
         <div class="form-group">
     <label for="exampleInputEmail1">place</label>
     <input type="email" class="form-control"  disabled aria-describedby="emailHelp"  value="{{ $event->place }}">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">nameevent</label>
     <input type="email" class="form-control"  disabled aria-describedby="emailHelp"  value="{{ $event->nameevent }}">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
 
 
   <div class="form-group">
     <label for="exampleInputEmail1">dateajout</label>
     <input type="email" class="form-control"  disabled aria-describedby="emailHelp"  value="{{ $event->dateajout }}">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">datefin</label>
     <input type="email" class="form-control"  disabled aria-describedby="emailHelp"  value="{{ $event->datefin }}">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
 
 
   <div class="form-group">
     <label for="exampleInputEmail1">velo_id</label>
     <input type="email" class="form-control"  disabled aria-describedby="emailHelp"  value="{{ $event->velo_id }}">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
 
 

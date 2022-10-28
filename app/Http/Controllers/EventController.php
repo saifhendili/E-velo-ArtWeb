@@ -35,9 +35,9 @@ class EventController extends Controller
         $input = $request->all();
         $filename=time().$request->file('picture')->getClientOriginalName();
         $path=$request->file('picture')->storeAs('images',$filename,'public');
-    $input["picture"]='storage/'.$path;
+        $input["picture"]='storage/'.$path;
         Event::create($input);
-        return redirect('admin/event')->with('flash_message', 'event Addedd!');  
+        return redirect('admin/admin/event')->with('flash_message', 'event Addedd!');  
     }
     
     public function show($id)
@@ -67,13 +67,13 @@ class EventController extends Controller
         $event = Event::find($id);
         $input = $request->all();
         $event->update($input);
-        return redirect('admin/event')->with('flash_message', 'event Updated!');  
+        return redirect('admin/admin/event')->with('flash_message', 'event Updated!');  
     }
   
     public function destroy($id)
     {
         Event::destroy($id);
-        return redirect('admin/event')->with('flash_message', 'Event deleted!');  
+        return redirect('admin/admin/event')->with('flash_message', 'Event deleted!');  
     }
     public function getCyclicte($event_id)
     {
@@ -82,5 +82,7 @@ class EventController extends Controller
       
         return view('event.CyclicteEvent')->with('eventscyclicte', $eventscyclicte);
     }
-    }
+    
+
+}
 
